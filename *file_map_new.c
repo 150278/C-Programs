@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <sys/mman.h>
+
+
+
+int main ()
+{
+
+
+int fd;
+char *c;
+
+struct stat file_info;
+
+
+fd=open("kernel.txt",O_CREAT|O_RDWR,0777);
+
+
+
+write(fd,"Abhishek kernal technolohies",25);
+
+
+
+fstat(fd,&file_info);
+
+printf("file size%d\n",file_info.st_size);
+c=mmap(0,file_info.st_size,PROT_READ|PROT_WRITE,MAP_PRIVATE,fd,0);
+
+perror("map");
+
+printf("%s\n",c);
+
+munmap(c,file_info.st_size);
+close(fd);
+return 0;
+}
+

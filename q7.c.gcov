@@ -1,0 +1,62 @@
+        -:    0:Source:q7.c
+        -:    0:Graph:q7.gcno
+        -:    0:Data:-
+        -:    0:Runs:0
+        -:    1:#include  <stdio.h>
+        -:    2:#include  <sys/types.h>
+        -:    3:
+        -:    4:#define   MAX_COUNT  200
+        -:    5:
+        -:    6:void  ChildProcess(void);                /* child process prototype  */
+        -:    7:void  ParentProcess(void);               /* parent process prototype */
+        -:    8:
+function main called 0 returned 0% blocks executed 0%
+    #####:    9:void  main(void)
+        -:   10:{
+        -:   11:     pid_t  pid;
+        -:   12:
+    #####:   13:     pid = fork();
+call    0 never executed
+    #####:   14:     if (pid == 0) 
+branch  0 never executed
+branch  1 never executed
+    #####:   15:          ChildProcess();
+call    0 never executed
+        -:   16:     else
+    #####:   17:          sleep();
+call    0 never executed
+    #####:   18:          ParentProcess();
+call    0 never executed
+    #####:   19:}
+        -:   20:
+function ChildProcess called 0 returned 0% blocks executed 0%
+    #####:   21:void  ChildProcess(void)
+        -:   22:{
+        -:   23:     int   i;
+        -:   24:
+    #####:   25:     for (i = 1; i <=2; i++)
+branch  0 never executed
+branch  1 never executed
+    #####:   26:          printf("   This line is from child, value = %d\n", i);
+call    0 never executed
+    #####:   27:     printf("   *** Child process is done ***\n");
+call    0 never executed
+    #####:   28:}
+        -:   29:
+        -:   30:
+function ParentProcess called 0 returned 0% blocks executed 0%
+    #####:   31:void  ParentProcess(void)
+        -:   32:{
+        -:   33:    
+        -:   34:     int   i;
+        -:   35:
+    #####:   36:     for (i = 1; i <=2; i++)
+branch  0 never executed
+branch  1 never executed
+    #####:   37:          wait(2);
+call    0 never executed
+    #####:   38:          printf("This line is from parent, value = %d\n", i);
+call    0 never executed
+    #####:   39:     printf("*** Parent is done ***\n");
+call    0 never executed
+    #####:   40:}
